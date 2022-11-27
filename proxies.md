@@ -11,3 +11,5 @@ https://gist.github.com/dracos/2538ae57d5d1732571bacf6168da4b0b
 https://github.com/inaz2/proxy2
 
 https://github.com/ezzye/simple_python_3_proxy
+
+https://github.com/mitmproxy/mitmproxy
