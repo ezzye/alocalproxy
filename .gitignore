@@ -12,6 +12,9 @@ server.csr
 server.key
 server.key.org
 
+#scripts
+scripts/
+
 # Distribution / packaging
 .Python
 build/
