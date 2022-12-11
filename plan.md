@@ -1,6 +1,7 @@
 # Overell Plan
 1. Prove concept by getting python proxy working on a sensitive website
 2. Implement a similar proxy with additional modules
+3. Make into stand alone package [using](https://stackoverflow.com/questions/5458048/how-can-i-make-a-python-script-standalone-executable-to-run-without-any-dependen)
 
 # Manual Concept
 1. Manually log into website and use app to intercept and change password

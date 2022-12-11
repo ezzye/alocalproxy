@@ -8,4 +8,4 @@ Options can be exposed via annotation on command line
 
 1. First write example addon and get it working
 2. Amend existing addon and get it working
-3. Write password intercept addon
+3. Write password intercept addon as a bash file
