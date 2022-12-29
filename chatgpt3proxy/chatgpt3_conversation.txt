@@ -1,0 +1,5 @@
+Give me the code for a http proxy written in python.
+
+This code creates a socket that listens for incoming connections on localhost on port 8080. When a new connection is accepted, it creates a new thread to handle the request. The handle_client function receives the request from the client, forwards it to the target server (www.example.com), receives the response from the target server, and sends the response back to the client. Finally, it cleans up the sockets.
+
+Keep in mind that this is just a basic example to give you an idea of how a HTTP proxy works. A production-ready HTTP proxy would need to handle a variety of additional scenarios, such as handling HTTPS connections, caching responses, and handling errors.

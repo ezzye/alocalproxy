@@ -1,0 +1,5 @@
+give me the python code for a web server with sign up and login with unit tests
+
+Here is an example of a simple Python web server with sign up and login functionality using the Flask web framework, along with unit tests using the unittest module:
+
+This code is similar to the previous example, but it also includes two unit tests: test_signup and `
