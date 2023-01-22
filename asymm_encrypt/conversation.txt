@@ -1,0 +1,32 @@
+Asymmetrical key encryption, also known as public key cryptography, is a method of encrypting data in which a pair of keys is used: a public key and a private key. The public key is used to encrypt the data, and the private key is used to decrypt it. This allows for secure communication, as the private key can be kept secret and only shared with trusted parties.
+
+Here is an example of how to use asymmetrical key encryption in Python using the cryptography library:
+
+This code generates a new private key, serializes it to a PEM file, and extracts the public key from it. It then serializes the public key to a PEM file and uses it to encrypt some data. The ciphertext is written to a file, and then the private key is used to decrypt it and verify that the original data has been successfully recovered.
+
+It's important to note that this is just a basic example, and in a real application you would need to handle things like exception handling, secure key storage, and proper padding for the encryption.
+
+Asymmetrical key encryption, also known as public key cryptography, is a method of encrypting data in which a pair of keys is used: a public key and a private key. The public key is used to encrypt the data, and the private key is used to decrypt it. Proper padding is important for asymmetrical key encryption because it ensures that the encrypted data is the same length as the original data, which can help prevent certain types of attacks.
+
+Here is an example of how to use asymmetrical key encryption with proper padding in Python using the cryptography library:
+
+This code generates a new private key,
+
+how to fix: python asymm_encrypt.py
+Traceback (most recent call last):
+  File "asymm_encrypt.py", line 41, in <module>
+    padded_data = oaep_padder.pad(data)
+AttributeError: 'OAEP' object has no attribute 'pad'
+
+It looks like you are trying to use the pad method of an object that was created from the OAEP class, but this method does not exist in the OAEP class.
+
+To fix this error, you will need to make sure that you are using the correct method for the object that you have created.
+
+One possible solution would be to use the encrypt method of the OAEP class instead of the pad method. This method will encrypt the data using the OAEP padding scheme and return the encrypted data.
+
+For example:
+
+Keep in mind that you will need to have the cryptography library installed in order to use the OAEP class and the padding module. You can install this library using pip install cryptography.
+
+
+

@@ -1,0 +1,94 @@
+@startuml
+top to bottom direction
+
+() "re-tried\nmessage" as retry
+() "rules document\nchange" as rule
+() "stream start/end\nchange" as stream
+() "vhw document\nchange" as vhw
+
+component rules_processor [
+**Scheduling Rules Processor**
+drop masterbrand message;
+emit simple trigger message;
+]
+
+component stream_processor [
+**Stream Time Processor**
+emit simple trigger message;
+]
+
+component vhw_processor [
+**VHW Change Processor**
+convert id to urn format;
+emit simple trigger message;
+]
+
+component piper [
+**Piper**
+look up pips and split to
+version level messages
+]
+
+component optimist [
+**Optimist**
+fetch optimistic lock information
+from availability reader
+]
+
+component teletubby [
+**Teletubby**
+get vhw document if pips pid
+and reduce broadcasts to ordered
+list of broadcast end
+]
+
+component toyah [
+**Toyah**
+consider hierarchy and masterbrand;
+adds list of urls for odsr rules documents;
+splits the message by authorisation if necessary;
+]
+
+
+component walker [
+**Walker**
+fetch rules documents from odsr;
+select the appropriate one;
+]
+
+component alphamega [
+**Alphamega** (implemented in phase 4)
+fetch stream start/end if necessary;
+]
+
+
+component str [
+**Symbolic Time Resolver**
+replace symbolic times in rules with
+actual times;
+]
+
+
+rule --> rules_processor
+stream --> stream_processor
+vhw --> vhw_processor
+retry --> optimist
+
+component ac [
+**Availability Calculator**
+apply conditional create/update to DynamoDB table;
+re-try message in Optimist if that fails;
+]
+
+rules_processor --> piper
+piper --> optimist
+stream_processor --> optimist
+vhw_processor --> optimist
+optimist --> teletubby
+teletubby --> toyah
+toyah --> walker
+walker --> alphamega
+alphamega --> str
+str --> ac
+
+@enduml

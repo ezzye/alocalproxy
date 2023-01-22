@@ -1,0 +1,23 @@
+@startuml
+top to bottom direction
+skinparam shadowing false
+
+() "User credentials\nand rights" as cred
+() "Link hash to\nshare credentials" as share
+() "Use encrypted credentials to\nproxy in to streaming website\nby using link hash pw on site." as encrypt
+
+package "Anthill" {
+  component [doubloon\nlambda] as doubloon
+  database "shipwreck\ndynamodb" as wreck
+  component [tortuga\nlambda] as tortuga
+}
+component [jollyroger\npython app] as jolly
+component [pegleg\npython app] as peg
+cred --> jolly
+share <-- jolly
+jolly <--> doubloon:REST/APIgateway
+doubloon --> wreck:REST
+wreck --> tortuga:REST
+tortuga <--> peg:REST/APIgateway
+peg --> encrypt
+@enduml
